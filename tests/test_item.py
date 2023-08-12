@@ -1,1 +1,19 @@
+from src.item import Item
+
+item1 = Item("Смартфон", 10000, 20)
+item2 = Item("Ноутбук", 20000, 5)
+
 """Здесь надо написать тесты с использованием pytest для модуля item."""
+
+def test_main():
+    assert item1.calculate_total_price() == 200000
+
+    assert item2.calculate_total_price() == 100000
+
+    item1.apply_discount()
+    assert item1.price == 8000
+    assert item2.price == 20000
+
+    item2.apply_discount()
+
+    assert item2.price == 16000
