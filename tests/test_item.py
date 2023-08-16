@@ -31,7 +31,14 @@ def test_main():
     item1 = Item.all[0]
     assert item1.name == 'Смартфон'
 
+    #Tests homework_3
+    item1 = Item("Смартфон", 10000, 20)
+    assert repr(item1) == "Item('Смартфон', 10000, 20)"
+    assert str(item1) == 'Смартфон'
 
+    item1 = Item("Планшет", 7000, 5)
+    assert repr(item1) == "Item('Планшет', 7000, 5)"
+    assert str(item1) == 'Планшет'
 
 
 
