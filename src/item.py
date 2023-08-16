@@ -1,4 +1,6 @@
 import csv
+import pathlib
+from pathlib import Path
 
 
 class Item:
@@ -7,6 +9,8 @@ class Item:
     """
     pay_rate = 1.0
     all = []
+    dir_path = pathlib.Path.home()
+    path = Path(dir_path, 'PycharmProjects', 'electronics-shop-project', 'src', 'items.csv')
 
     def __init__(self, name: str, price: float, quantity: int) -> None:
         """
@@ -53,7 +57,7 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls):
         Item.all = []
-        with open('C://Users/aasan/PycharmProjects/electronics-shop-project/src/items.csv', 'r') as f:
+        with open(cls.path, 'r') as f:
             reader = csv.DictReader(f)
             for item in reader:
                 cls(item['name'], item['price'], item['quantity'])
