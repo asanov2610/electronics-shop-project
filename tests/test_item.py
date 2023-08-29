@@ -2,7 +2,7 @@ from src.item import Item
 
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 
-def test_main():
+def test_item():
     # Tests homework_1
     item1 = Item("Смартфон", 10000, 20)
     item2 = Item("Ноутбук", 20000, 5)
@@ -41,5 +41,6 @@ def test_main():
     assert str(item1) == 'Планшет'
 
 
-
+    #Tests homework_4
+    assert item1 + 5 == None
 
