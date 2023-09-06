@@ -3,6 +3,10 @@ import pathlib
 from pathlib import Path
 
 
+class InstantiateCSVError(Exception):
+    pass
+
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -31,11 +35,11 @@ class Item:
     def __str__(self):
         return f"{self.__name}"
 
-
     def __add__(self, other):
         if isinstance(other, self.__class__):
             return self.quantity + other.quantity
         return None
+
     def calculate_total_price(self) -> float:
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
@@ -68,7 +72,19 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls):
         Item.all = []
-        with open(cls.path, 'r') as f:
-            reader = csv.DictReader(f)
-            for item in reader:
-                cls(item['name'], item['price'], item['quantity'])
+        try:
+            file = open('../src/item.csv')
+        except FileNotFoundError:
+            print('_Отсутствует файл item.csv_')
+        finally:
+            try:
+                with open('../src/item1.csv') as f:
+                    reader = csv.DictReader(f)
+                    for item in reader:
+                        if "quantity" in item:
+                            cls(item['name'], item['price'], item['quantity'])
+                        else:
+                            raise InstantiateCSVError
+            except InstantiateCSVError:
+                print("_Файл item1.csv поврежден_")
+
