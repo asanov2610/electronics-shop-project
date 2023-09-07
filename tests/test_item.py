@@ -1,5 +1,7 @@
 from src.item import Item
-
+from src.item import InstantiateCSVError
+import pytest
+import csv
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 
 def test_item():
@@ -44,3 +46,13 @@ def test_item():
     #Tests homework_4
     assert item1 + 5 == None
 
+
+    #Tests homework_6
+def test_instantiate_from_csv():
+    with pytest.raises(FileNotFoundError):
+        open("item.csv")
+    with pytest.raises(InstantiateCSVError):
+        with open('../src/items.csv') as csvfile:
+            reader = csv.DictReader(csvfile)
+            if not "quantit" in reader.fieldnames:
+                raise InstantiateCSVError
