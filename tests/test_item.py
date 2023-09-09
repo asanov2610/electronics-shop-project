@@ -48,11 +48,26 @@ def test_item():
 
 
     #Tests homework_6
+# def test_instantiate_from_csv():
+#     with pytest.raises(FileNotFoundError):
+#         open("item.csv")
+#     with pytest.raises(InstantiateCSVError):
+#         with open('../src/items.csv') as csvfile:
+#             reader = csv.DictReader(csvfile)
+#             if not "quantity" in reader.fieldnames:
+#                 raise InstantiateCSVError
+
+
 def test_instantiate_from_csv():
+    Item.instantiate_from_csv()
+    Item.path = '../src/item.csv'
     with pytest.raises(FileNotFoundError):
-        open("item.csv")
-    with pytest.raises(InstantiateCSVError):
-        with open('../src/items.csv') as csvfile:
-            reader = csv.DictReader(csvfile)
-            if not "quantit" in reader.fieldnames:
-                raise InstantiateCSVError
+        open(Item.path)
+
+
+
+
+
+
+
+
