@@ -71,9 +71,10 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls):
+        cls.path_file = Item.path
         Item.all = []
         try:
-            file = open('../src/item.csv')
+             Item.path = open('../src/item.csv')
         except FileNotFoundError:
             print('_Отсутствует файл item.csv_')
         finally:
