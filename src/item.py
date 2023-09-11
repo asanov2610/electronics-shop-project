@@ -70,8 +70,8 @@ class Item:
         return int(float(string))
 
     @classmethod
-    def instantiate_from_csv(cls):
-        cls.path_file = Item.path
+    def instantiate_from_csv(cls, path_file):
+        cls.path_file = path_file
         Item.all = []
         try:
              Item.path = open('../src/item.csv')
