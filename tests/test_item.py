@@ -59,9 +59,8 @@ def test_item():
 
 
 def test_instantiate_from_csv():
-    Item.instantiate_from_csv('../src/item.csv')
     with pytest.raises(FileNotFoundError):
-        open(Item.path)
+        Item.instantiate_from_csv('../src/item.csv')
 
 
 

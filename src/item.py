@@ -76,7 +76,7 @@ class Item:
         try:
              Item.path = open('../src/item.csv')
         except FileNotFoundError:
-            print('_Отсутствует файл item.csv_')
+            raise FileNotFoundError
         finally:
             try:
                 with open('../src/item1.csv') as f:
