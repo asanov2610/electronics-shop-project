@@ -70,13 +70,13 @@ class Item:
         return int(float(string))
 
     @classmethod
-    def instantiate_from_csv(cls):
-        cls.path_file = Item.path
+    def instantiate_from_csv(cls, path_file):
+        cls.path_file = path_file
         Item.all = []
         try:
              Item.path = open('../src/item.csv')
         except FileNotFoundError:
-            print('_Отсутствует файл item.csv_')
+            raise FileNotFoundError
         finally:
             try:
                 with open('../src/item1.csv') as f:
